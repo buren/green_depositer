@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :deposits do
     collection do
+      get :stats
       get :lat_longs
       get :latest
     end

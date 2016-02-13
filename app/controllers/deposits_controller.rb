@@ -16,7 +16,18 @@ class DepositsController < ApplicationController
   before_action :set_deposit, only: [:show, :edit, :update, :destroy]
 
   def latest
-    render json: Deposit.order(:created_at).last(6).reverse
+    render json: Deposit.order(:created_at).last(5)
+  end
+
+  def stats
+    categories = Deposit.pluck(:category).uniq
+    stats = categories.map do |category|
+      [
+        category,
+        Deposit.where(category: category).sum(:quantity)
+      ]
+    end
+    render json: stats
   end
 
   # GET /deposits

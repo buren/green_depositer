@@ -1,0 +1,24 @@
+<div class="panel panel-success" style="text-align:center">
+  <div class="panel-heading">Total recycled material</div>
+  <div class="panel-body" id="totalDeposits"></div>
+
+</div>
+
+<script type="text/javascript">
+
+
+  setInterval(function() {
+    $.getJSON('/deposits/stats', function(deposits) {
+      var footerTxt = "";
+      for (var i = 0; i < deposits.length; i++) {
+        var dep = deposits[i];
+
+        footerTxt+="<strong>"+dep[0]+"</strong>"+": "+dep[1]+" kgs "
+
+
+      }
+
+      $('#totalDeposits').html(footerTxt);
+    });
+  }, 500);
+</script>
