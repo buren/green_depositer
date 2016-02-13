@@ -75,6 +75,10 @@ class DepositsController < ApplicationController
     end
   end
 
+  def lat_longs
+    render json: Deposit.pluck(:latitude, :longitude)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deposit
