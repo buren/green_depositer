@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <%= render 'partials/deposits_map' %>
+    <%= render 'deposits/map' %>
   </div>
   <div class="col-sm-6">
     <%= render 'deposits/latest' %>
@@ -28,13 +28,13 @@
 
 <div class="row">
 	<div class="col-md-6">
-		<%= render "home/deposit_table", deposits: @user_deposits, model_class: model_class, title: "Your deposits" %>
+		<%= render 'deposits/table', deposits: @user_deposits, model_class: model_class, title: 'Your deposits' %>
 	</div>
 	<div class="col-md-6">
-		<%= render "home/deposit_table", deposits: @deposits, model_class: model_class, title: "Deposits" %>
+		<%= render 'deposits/table', deposits: @deposits, model_class: model_class, title: 'Deposits' %>
 	</div>
 </div>
 
-<%= link_to t('.new', default: t("helpers.links.new")),
+<%= link_to t('.new', default: t('helpers.links.new')),
             new_deposit_path,
             class: 'btn btn-primary' %>
