@@ -83,6 +83,6 @@ class DepositsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deposit_params
-      params.require(:deposit).permit(:quantity, :unit, :category, :latitude, :longitude)
+      params.require(:deposit).permit(:quantity, :unit, :category, :latitude, :longitude, :user_id)
     end
 end
