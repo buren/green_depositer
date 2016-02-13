@@ -1,7 +1,7 @@
 namespace :fake do
   desc 'Fakes user desposit submissions'
   task data: :environment do
-    faker = Faker.new
+    faker = GreenFaker.new
 
     while true
       faker.create_deposit(created_at: Time.now)

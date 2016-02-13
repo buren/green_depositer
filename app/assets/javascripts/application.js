@@ -17,5 +17,6 @@
 //= require bootstrap
 //= require deposit_form_geopos
 //= require markerclusterer
+//= require jquery.dataTables
 
 // require_tree .

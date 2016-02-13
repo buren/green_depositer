@@ -1,4 +1,4 @@
-class Faker
+class GreenFaker
   LAT_LONGS = [
     [59.313369, 18.066330],
     [59.314245, 18.074226],
@@ -42,7 +42,7 @@ class Faker
   def create_user
     @user_count += 1
     User.create!(
-      email: "some_user_#{@user_count}@example.com",
+      email: "some.user#{@user_count}@example.com",
       password: '12345678'
     )
   end
