@@ -58,7 +58,8 @@ class Faker
       category: Deposit::CATEGORIES.sample,
       latitude: latitude,
       longitude: longitude,
-      created_at: created_at || rand_time(20.days.ago)
+      created_at: created_at || rand_time(20.days.ago),
+      user: User.all.sample
     )
   end
 end

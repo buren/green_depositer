@@ -48,6 +48,8 @@ class DepositsController < ApplicationController
       if @deposit.save
         format.html { redirect_to @deposit, notice: 'Deposit was successfully created.' }
         format.json { render :show, status: :created, location: @deposit }
+        # flash[:success] = 'New deposit created'
+        # redirect_to root_path
       else
         format.html { render :new }
         format.json { render json: @deposit.errors, status: :unprocessable_entity }

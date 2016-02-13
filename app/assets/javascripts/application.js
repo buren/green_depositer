@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 // require turbolinks
-//= require_tree .
+//= require bootstrap
+//= require deposit_form_geopos
+//= require markerclusterer
+
+// require_tree .
