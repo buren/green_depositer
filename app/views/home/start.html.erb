@@ -1,0 +1,128 @@
+ <nav class="navbar navbar-inverse" >
+  <div class="container-fluid">
+    <div class="navbar-header" >
+    <%= link_to "Greenkeeper", root_path, class: "navbar-brand" %>
+    </div>
+    <ul class="nav navbar-nav" >
+      <li class="active"><%= link_to "Home", root_path %></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+      	<%= link_to edit_user_password_path do %>
+      		<span class="glyphicon glyphicon-user"></span>
+      		Profile
+  		<% end %>
+	  </li>
+      <li>
+      	<%= link_to root_path do %>
+      		<span class="glyphicon glyphicon-user"></span>
+      		Login
+  		<% end %>
+	  </li>
+    </ul>
+  </div>
+</nav>
+
+<h1>welcome <%= welcome_name%> </h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody id="latest-deposits"></tbody>
+</table>
+
+<script type="text/javascript">
+  setInterval(function() {
+    $.getJSON('/deposits/latest', function(deposits) {
+      var html = '';
+      for (var i = 0; i < deposits.length; i++) {
+        var dep = deposits[i];
+        html += '<tr>' + '<td>' + dep.quantity + '</td>' + '<td>' + dep.category + '</td>' + '</tr>'
+      }
+      $('#latest-deposits').html(html);
+    });
+  }, 500);
+</script>
+
+<%- model_class = Deposit -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<%= render "home/deposit_table", deposits: @user_deposits, model_class: model_class, title: "Your deposits" %>
+	</div>
+	<div class="col-md-6">
+		<%= render "home/deposit_table", deposits: @deposits, model_class: model_class, title: "Deposits" %>
+	</div>
+</div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_deposit_path,
+            :class => 'btn btn-primary' %>
+
+<!-- <div class="panel panel-default">
+  <div class="panel-body" style="text-align: center">TOTAL ENERGY SAVED</div>
+  <div class="panel-footer" style="text-align: center"></div>
+</div> -->
+
+<hr>
+
+<div class="col-sm-12">
+  <div id="map"></div>
+</div>
+
+<div class="col-sm-6">
+  <h3>Deposits by category</h3>
+  <%= pie_chart deposits_by_category_chart_path, refresh: 50000 %>
+</div>
+
+<div class="col-sm-6">
+  <h3>Deposits by day</h3>
+  <%= line_chart deposits_by_day_chart_path, refresh: 50000 %>
+</div>
+
+<script type="text/javascript">
+  function buildMapFromLatLongs(latLongs) {
+    var centerPos = {lat: 59.329485, lng: 18.043327};
+
+    var options = {
+      'zoom': 12,
+      'center': centerPos,
+      'mapTypeId': google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById('map'), options);
+
+    var markers = [];
+    for (var i = 0; i < latLongs.length; i++) {
+      var latLng = new google.maps.LatLng(latLongs[i][0], latLongs[i][1]);
+      var marker = new google.maps.Marker({position: latLng});
+      markers.push(marker);
+    }
+    var markerCluster = new MarkerClusterer(map, markers);
+  }
+
+  function initMap() {
+    $.getJSON('/deposits/lat_longs', function(latLongs) {
+      buildMapFromLatLongs(latLongs);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=false&callback=initMap"></script>

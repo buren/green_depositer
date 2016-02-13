@@ -15,6 +15,10 @@
 class DepositsController < ApplicationController
   before_action :set_deposit, only: [:show, :edit, :update, :destroy]
 
+  def latest
+    render json: Deposit.last(5)
+  end
+
   # GET /deposits
   # GET /deposits.json
   def index
@@ -87,6 +91,6 @@ class DepositsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deposit_params
-      params.require(:deposit).permit(:quantity, :unit, :category, :latitude, :longitude)
+      params.require(:deposit).permit(:quantity, :unit, :category, :latitude, :longitude, :user_id)
     end
 end

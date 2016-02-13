@@ -8,11 +8,20 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/css/dataTables.bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/jquery.dataTables.min.js" charset="utf-8"></script>
   </head>
 
   <body>
     <div class="container">
       <%= yield %>
     </div>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('table.datatable').DataTable();
+      });
+    </script>
   </body>
 </html>

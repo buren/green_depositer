@@ -1,0 +1,25 @@
+<table class="table table-striped datatable">
+<caption><%= title %></caption>
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%= model_class.human_attribute_name(:unit) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
+
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% deposits.each do |deposit| %>
+      <tr>
+        <td><%= link_to deposit.id, deposit_path(deposit) %></td>
+        <td><%= deposit.quantity %></td>
+        <td><%= deposit.unit %></td>
+        <td><%= deposit.category %></td>
+
+        <td><%= l(deposit.created_at)[0..16] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
