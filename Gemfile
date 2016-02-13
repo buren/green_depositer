@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta2', '< 5.1'
 # Use Puma as the app server
@@ -15,6 +17,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'chartkick', github: 'buren/chartkick'
 gem 'groupdate'
+
+gem 'rails_12factor'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
