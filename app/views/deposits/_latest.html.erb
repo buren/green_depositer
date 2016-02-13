@@ -2,8 +2,8 @@
   <div class="panel-heading">Latest deposits</div>
   <div class="panel-body">
 
-    <table class="table table-striped">
-      <caption>Everyone</caption>
+    <table class="table table-striped table-hover">
+      <!-- <caption>Everyone</caption> -->
       <thead>
         <tr>
           <th>Quantity</th>
@@ -17,13 +17,22 @@
 </div>
 
 <script type="text/javascript">
+  var makeEl = function(el, string) {
+    return '<' + el + '>' + string + '</' + el + '>';
+  };
+
   setInterval(function() {
     $.getJSON('/deposits/latest', function(deposits) {
-
       var html = '';
       for (var i = 0; i < deposits.length; i++) {
         var dep = deposits[i];
-        html += '<tr>' + '<td>' + dep.quantity + ' ' + dep.unit + '</td>' + '<td>' + dep.category + '</td>' + '</tr>';
+
+        var cells = [
+          makeEl('td', dep.quantity + ' ' + dep.unit),
+          makeEl('td', dep.category)
+        ];
+
+        html += makeEl('tr', cells.join(''));
       }
       $('#latest-deposits').html(html);
     });

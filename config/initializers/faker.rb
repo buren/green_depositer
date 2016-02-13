@@ -52,10 +52,12 @@ class Faker
     lat_long = LAT_LONGS.sample
     latitude = lat_long.first
     longitude = lat_long.last
+    category = Deposit::CATEGORIES.sample
+    unit = category == 'Pant' ? 'pcs' : 'kg'
     Deposit.create!(
       quantity: (6..30).to_a.sample,
-      unit: %w(kg pcs).to_a.sample,
-      category: Deposit::CATEGORIES.sample,
+      unit: unit,
+      category: category,
       latitude: latitude,
       longitude: longitude,
       created_at: created_at || rand_time(20.days.ago),

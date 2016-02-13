@@ -50,7 +50,7 @@
 /* line 44, ../sass/_viewport.scss */
 #result_strip {
   margin: 10px 0;
-  border-top: 1px solid #EEE;
+  /*border-top: 1px solid #EEE;*/
   border-bottom: 1px solid #EEE;
   padding: 10px 0;
 }
