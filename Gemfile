@@ -13,6 +13,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 #gem 'therubyracer', platforms: :ruby
 
+gem 'chartkick', github: 'buren/chartkick'
+gem 'groupdate'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -24,14 +27,14 @@ gem 'twitter-bootstrap-rails'
 
 gem 'devise', github: 'plataformatec/devise'
 
+gem 'pg' # PostgreSQL
+
 group :development, :test do
   gem 'letter_opener'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'annotate'
 end
 
@@ -40,8 +43,4 @@ group :development do
   gem 'web-console', '~> 3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-group :production do
-  #gem 'pg'
 end

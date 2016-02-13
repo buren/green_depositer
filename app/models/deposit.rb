@@ -21,5 +21,5 @@ class Deposit < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  CATEGORIES = %(Pant Clothes Glass Plastic Carton)
+  CATEGORIES = %w(Pant Clothes Glass Plastic Carton)
 end

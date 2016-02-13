@@ -15,6 +15,10 @@
 class DepositsController < ApplicationController
   before_action :set_deposit, only: [:show, :edit, :update, :destroy]
 
+  def latest
+    render json: Deposit.last(5)
+  end
+
   # GET /deposits
   # GET /deposits.json
   def index
@@ -73,6 +77,10 @@ class DepositsController < ApplicationController
       format.html { redirect_to deposits_url, notice: 'Deposit was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def lat_longs
+    render json: Deposit.pluck(:latitude, :longitude)
   end
 
   private
