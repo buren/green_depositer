@@ -2,7 +2,6 @@
 <caption><%= title %></caption>
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
       <th><%= model_class.human_attribute_name(:unit) %></th>
       <th><%= model_class.human_attribute_name(:category) %></th>
@@ -13,7 +12,6 @@
   <tbody>
     <% deposits.each do |deposit| %>
       <tr>
-        <td><%= link_to deposit.id, deposit_path(deposit) %></td>
         <td><%= deposit.quantity %></td>
         <td><%= deposit.unit %></td>
         <td><%= deposit.category %></td>
