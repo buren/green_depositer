@@ -8,7 +8,7 @@ namespace :fake do
 
       puts 'Created fake deposit.'
 
-      sleep 0.5
+      sleep 1
     end
   end
 end

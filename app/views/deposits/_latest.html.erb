@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Latest deposits</div>
+  <div class="panel-body">
+
+    <table class="table table-striped">
+      <caption>Everyone</caption>
+      <thead>
+        <tr>
+          <th>Quantity</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody id="latest-deposits"></tbody>
+    </table>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  setInterval(function() {
+    $.getJSON('/deposits/latest', function(deposits) {
+
+      var html = '';
+      for (var i = 0; i < deposits.length; i++) {
+        var dep = deposits[i];
+        html += '<tr>' + '<td>' + dep.quantity + ' ' + dep.unit + '</td>' + '<td>' + dep.category + '</td>' + '</tr>';
+      }
+      $('#latest-deposits').html(html);
+    });
+  }, 500);
+</script>

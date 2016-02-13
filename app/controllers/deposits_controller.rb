@@ -16,7 +16,7 @@ class DepositsController < ApplicationController
   before_action :set_deposit, only: [:show, :edit, :update, :destroy]
 
   def latest
-    render json: Deposit.last(5)
+    render json: Deposit.order(:created_at).last(5)
   end
 
   # GET /deposits
