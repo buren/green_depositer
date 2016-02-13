@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "deposits#new"
+  root to: "home#start"
 
   devise_for :users
   resources :deposits
