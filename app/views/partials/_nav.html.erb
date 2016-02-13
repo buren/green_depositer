@@ -4,10 +4,24 @@
    <%= link_to "Greenkeeper", root_path, class: "navbar-brand" %>
    </div>
    <ul class="nav navbar-nav" >
-     <li><%= link_to "Home", root_path %></li>
      <li>
-       <%= link_to 'New deposit', new_deposit_path %>
+       <%= link_to root_path do %>
+         <span class="fa fa-home"></span>
+         Home
+       <% end %>
      </li>
+     <li>
+       <%= link_to new_deposit_path do %>
+         <span class="fa fa-plus"></span>
+         New deposit
+       <% end %>
+     </li>
+     <li>
+       <%= link_to scan_path do %>
+         <span class="fa fa-camera"></span>
+           Scan
+       <% end %>
+      </li>
    </ul>
    <ul class="nav navbar-nav navbar-right">
      <% if current_user %>
