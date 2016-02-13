@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/scan', to: 'home#scan'
 
+  get 'deposits_by_hour_chart', to: 'charts#deposits_by_hour'
   get 'deposits_by_day_chart', to: 'charts#deposits_by_day'
   get 'deposits_by_category_chart', to: 'charts#deposits_by_category'
 
